@@ -62,10 +62,10 @@ Resources:
 Outputs:
   websiteURL:
     Value: !Sub 'http://${CloudFormationBucket}.s3-website-${AWS::Region}.amazonaws.com'
-    description: 'URL of the S3 static website'
+   
   s3BucketSecureURL:
     Value: !Sub 'https://${CloudFormationBucket}.s3.amazonaws.com'
-    description: 'Secure URL of the S3 bucket'
+    
   VpcId:
     Value: !Ref AppVPC
   SubnetId:
