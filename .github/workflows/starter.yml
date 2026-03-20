@@ -1,0 +1,37 @@
+name: CIFullStackApp Starter Workflow
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x]
+
+    steps:
+        # Checkout the repository
+    - uses: actions/checkout@v2
+        # Set up Node.js using specified versions in the matrix
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+        #install dependencies, run tests, and lint the code
+    - name: cd backend and install dependencies
+
+      run:  cd backend && npm install
+    - name: Run tests
+      run: cd backend && npm test
+    - name: Run linter
+      run: cd backend && npm run lint
+
+      # send a console message to indicate the workflow has completed successfully
+    - name: Workflow completed
+      run: |
+        echo "hello ${{ github.actor }}!. You pushed to ${{ github.repository }} at $(date). Workflow completed successfully!"
