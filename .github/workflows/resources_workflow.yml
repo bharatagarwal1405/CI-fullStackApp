@@ -9,7 +9,7 @@ jobs:
   create-resources:
     runs-on: ubuntu-latest
     steps:
-
+      
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -25,6 +25,7 @@ jobs:
       - name: Deploy CloudFormation stack
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
+            name: fullstackapp-resources-stack
             template: devTestCloudTemplate.yml
             no-fail-on-empty-changeset: "1"
 
