@@ -5,15 +5,15 @@ Resources:
   CloudFormationBucket:
     Type: AWS::S3::Bucket
     Properties:
-      BucketName: 'fullstackapp-${EnvironmentName}-cf-bucket'
+      BucketName: 'fullstackapp-cf-bucket'
       websiteConfiguration:
         indexDocument: index.html
         errorDocument: error.html
 
 Outputs:
-  websiteURL:
-    Value:  'http://${CloudFormationBucket}.s3-website-${AWS::Region}.amazonaws.com'
+  WebsiteURL:
+    Value:  'CloudFormationBucket.WebsiteURL'
     Description: URL of the S3 static website
-  s3BucketSecureURL:
-    Value:  'https://${CloudFormationBucket}.s3.amazonaws.com'
+  S3BucketSecureURL:
+    Value:  'CloudFormationBucket.DomainName'
     Description: Secure URL of the S3 bucket
