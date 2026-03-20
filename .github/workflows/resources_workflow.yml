@@ -22,12 +22,15 @@ jobs:
             aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
             aws-region: us-east-1
 
+      - name: Validate CloudFormation template
+        run: aws cloudformation validate-template --template-body file://devTestCloudTemplate.yml
+
       - name: Deploy CloudFormation stack
         uses: aws-actions/aws-cloudformation-github-deploy@v1
         with:
             name: fullstackapp-resources-stack
             template: devTestCloudTemplate.yml
-            no-fail-on-empty-changeset: "1"
+            no-fail-on-empty-changeset: true
 
       
       - name: Set up Node.js

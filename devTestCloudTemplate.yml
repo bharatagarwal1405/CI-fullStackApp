@@ -6,14 +6,14 @@ Resources:
     Type: AWS::S3::Bucket
     Properties:
       BucketName: 'fullstackapp-cf-bucket'
-      websiteConfiguration:
-        indexDocument: index.html
-        errorDocument: error.html
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
 
 Outputs:
   WebsiteURL:
-    Value:  'CloudFormationBucket.WebsiteURL'
+    Value: !GetAtt CloudFormationBucket.WebsiteURL
     Description: URL of the S3 static website
   S3BucketSecureURL:
-    Value:  'CloudFormationBucket.DomainName'
+    Value: !GetAtt CloudFormationBucket.DomainName
     Description: Secure URL of the S3 bucket
