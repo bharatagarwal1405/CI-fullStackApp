@@ -1,4 +1,4 @@
-name: build-test-deploy_secret
+name: CloudFormation-Resource-Creation
 on:
   workflow_dispatch:
 
