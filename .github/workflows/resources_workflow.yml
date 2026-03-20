@@ -41,6 +41,6 @@ jobs:
         with:
             name: fullstackapp-resources-stack
             uses: aws-actions/aws-cloudformation-github-deploy@v1
-            template: ./devTestCloudTemplate.yml
+            template: devTestCloudTemplate.yml
             no-fail-on-empty-changeset: "1"
             
